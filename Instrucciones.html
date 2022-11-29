@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>¡Instrucciones!</title>
+
+		<!--Bootstrap 4.5.0-->
+  	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  		<!--Estilos -->
+	  <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/animate.min.css"/>
+
+    <script type="text/javascript">
+      var pantalla_instruccion = 1;
+      var total_instrucciones = 3;
+
+        function btn_onmouseover(btn) {
+          var imagen = "assets/btn/"+btn.id+"_hover.png"
+          btn.src=imagen;
+          //btn.style.width = '200px';
+        }
+
+        function btn_onmouseout(btn) {
+          var imagen = "assets/btn/"+btn.id+".png"
+          btn.src=imagen;
+        }
+
+        function btn_onmousedown(btn) {
+          var imagen = "assets/btn/"+btn.id+"_press.png"
+          btn.src=imagen;
+        }
+
+        function btn_onmouseup(btn) {
+
+          if (pantalla_instruccion == 1 || pantalla_instruccion ==  total_instrucciones) 
+          {
+            sincambio("instruccion"+pantalla_instruccion);
+          }
+
+          if (btn.id == "next" &&  pantalla_instruccion < total_instrucciones) {
+            oculta(pantalla_instruccion);
+            pantalla_instruccion = pantalla_instruccion +1;
+            muestra(pantalla_instruccion,"animate__animated animate__backInRight");
+          }
+
+          if (btn.id == "back" && pantalla_instruccion > 1) {
+            oculta(pantalla_instruccion);
+            pantalla_instruccion = pantalla_instruccion - 1;
+            muestra(pantalla_instruccion,"animate__animated animate__backInLeft");
+          }
+
+          if (btn.id == "reset") {
+            oculta(pantalla_instruccion);
+            pantalla_instruccion = 1;
+            muestra(pantalla_instruccion,"animate__animated animate__backInRight");
+          }
+
+          if (btn.id == "play") {
+            pantalla_instruccion = 1;
+            location.href='OVA.html';
+          }
+          if (btn.id == "home") {
+            pantalla_instruccion = 1;
+            location.href='Home.html';
+          }
+          if (btn.id == "back_page") {
+            pantalla_instruccion = 1;
+            location.href='Home.html';
+          }
+        }
+
+        function sincambio(pantalla){
+            var p = "instruccion"+pantalla;
+            var item = document.getElementById(pantalla);
+            item.className = 'animate__animated animate__tada';
+        }
+
+        function oculta(pantalla){
+            var p = "instruccion"+pantalla;
+            var i = "indicador"+pantalla;
+
+            var item = document.getElementById(p);
+            item.className = 'none';
+
+            var ind = document.getElementById(i);
+            ind.src = "assets/btn/indicador.png";
+        }
+
+        function muestra(pantalla,clase){
+            p = "instruccion"+pantalla;
+            i = "indicador"+pantalla;
+            var item = document.getElementById(p);
+            item.className = 'block '+ clase;
+            var ind = document.getElementById(i);
+            ind.src = "assets/btn/indicador_active.png";
+          }
+    </script>
+
+</head>
+<body>
+        <!--Barra de Título -->
+	<div id="barra_titulo" class="titulo_barra">
+	   	<h1 class="titulo">HISTORIA</h1>
+	</div>
+        <!--Barra de Subtítulo -->
+	<div id="barra_subtitulo" class="subtitulo_barra">
+	   	<p class="subtitulo">Sopa de Letras</p>
+	</div>
+    	<!--INGRESA AQUÍ EL CONTENIDO -->
+	<div class="row">
+      
+      <!-- ============ INSTRUCCIÓN 1 ================== -->
+      <div id="instruccion1" class="animate__animated animate__backInDown" style="width: 100%; align-items: center;text-align: center; padding-top: 2%;">
+        <div class="col-12">
+          <div class="row">
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+              </div>
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="align-items: center;text-align: center;">
+                  <h3 class="animate__animated animate__backInDown"> INSTRUCCIONES</h3>
+                  <br>
+                  <p id="loco">Busca las palabras en la sopa de letras que se encuentra en el panel izquierdo de tu pantalla</p>
+              </div>
+              <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7"  > 
+                    <img class="img" src="assets/laptop.png" style="width: 70%;align-items: center;text-align: center;" />                
+                      <br>
+              </div>
+          </div>   
+        </div>
+      </div>
+
+      <!-- ============ INSTRUCCIÓN 2 ================== -->
+      <div id="instruccion2" class="none" style="width: 100%; align-items: center;text-align: center; padding-top: 2%;">
+        <div class="col-12">
+          <div class="row">
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+              </div>
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="align-items: center;text-align: center;">
+                  <h3 class="animate__animated animate__backInDown"> INSTRUCCIONES</h3>
+                  <br>
+                  <p>Recuerda que las palabras se pueden localizar en forma horizontal, diagonal y vertical.</p>
+              </div>
+              <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7"  > 
+                    <img class="img" src="assets/laptop.png" style="width: 70%;align-items: center;text-align: center;" />                
+                      <br>
+              </div>
+          </div>   
+        </div>
+      </div>
+
+      <!-- ============ INSTRUCCIÓN 3 ================== -->
+      <div id="instruccion3" class="none" style="width: 100%; align-items: center;text-align: center; padding-top: 2%;">
+        <div class="col-12">
+          <div class="row">
+              <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+              </div>
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="align-items: center;text-align: center;">
+                  <h3 class="animate__animated animate__backInDown"> INSTRUCCIONES</h3>
+                  <br>
+                  <p>Al ubicar una palabra dentro de la sopa de letras, presiona el botón derecho del mouse y sin soltarlo muévelo al final de la palabra, notarás como cambia de color.</p>
+                  <br>
+                  <h3>¡ÉXITO!</h3>
+                  <a href="OVA.html" class="myButton animate__animated animate__zoomInDown animate__delay-1s">COMENZAR</a>
+
+              </div>
+              <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7"  > 
+                    <img class="img" src="assets/laptop.png" style="width: 70%;align-items: center;text-align: center;" />          
+                      <br>
+              </div>
+          </div>   
+        </div>
+      </div>
+    </div>
+        
+  <!--FIN DEL CONTENIDO -->
+      <!--Fondo -->
+      <div class="col-md-12" style="position: absolute;z-index: -2;">
+	       <img class="img" src="assets/fondo_piso.png" style="width: 100%; bottom: 10px;position: fixed; z-index: -2;" />
+	   	</div>
+
+      <!--Botones top-->
+      <div class="col-md-12" style="position: relative;">
+          <img src="assets/btn/home.png" id="home" class="btn_top" style="right: 30px;" onmouseover="btn_onmouseover(this);" onmouseout="btn_onmouseout(this);" onmousedown="btn_onmousedown(this)" onmouseup="btn_onmouseup(this)">
+
+          <img src="assets/btn/back_page.png" id="back_page" class="btn_top" style="left: 30px;" onmouseover="btn_onmouseover(this);" onmouseout="btn_onmouseout(this);" onmousedown="btn_onmousedown(this)" onmouseup="btn_onmouseup(this)">
+      </div>
+
+      <!--Botones bottom -->
+      <div class="col-md-12" style="position: relative;">
+          <img src="assets/btn/reset.png" id="reset" class="btn" style="right: 50px;" onmouseover="btn_onmouseover(this);" onmouseout="btn_onmouseout(this);" onmousedown="btn_onmousedown(this)" onmouseup="btn_onmouseup(this)">
+
+          <img src="assets/btn/next.png" id="next" class="btn" style="right: 105px;" onmouseover="btn_onmouseover(this);" onmouseout="btn_onmouseout(this);" onmousedown="btn_onmousedown(this)" onmouseup="btn_onmouseup(this)">
+
+          <img src="assets/btn/back.png" id="back" class="btn" style="right: 165px;" onmouseover="btn_onmouseover(this);" onmouseout="btn_onmouseout(this);" onmousedown="btn_onmousedown(this)" onmouseup="btn_onmouseup(this)">
+
+          <img src="assets/btn/play.png" id="play" class="btn" style="right: 230px;" onmouseover="btn_onmouseover(this);" onmouseout="btn_onmouseout(this);" onmousedown="btn_onmousedown(this)" onmouseup="btn_onmouseup(this)">
+      </div>
+
+      <!--Indicadores -->
+      <div class="col-md-12" style="position: relative;">
+          <img src="assets/btn/indicador_active.png" id="indicador1" class="indicador" style="right: 52%;">
+          <img src="assets/btn/indicador.png" id="indicador2" class="indicador" style="right: 50%;">
+          <img src="assets/btn/indicador.png" id="indicador3" class="indicador" style="right: 48%;">
+      </div>
+</body>
+</html>
